@@ -1,0 +1,102 @@
+s= ababba
+Let's write all suffix array of this string in lexicographical order
+'' a, ababba abba ba babba bba
+storing the strings itself the order is o(n2). So instead of storing the entire suffix we will store the index of
+the suffix (first letter)
+If we enumerate the letters of the string 
+Each suffix can be uniquely identified by the index of the first letter of this suffix.
+empty suffix starts from end of the string
+
+say s= ababba
+	   0123456
+	   
+empty suffix has index 6 
+a has index 5
+ababba has index 0
+abba has index 2
+ba has index 4
+babba has index 1
+bba has index 3
+
+so this array of integers corresponds to the suffix of the string.
+[6,5,0,2,4,1,3]
+this array will be the suffix array of the string.
+
+
+Step1 
+How to build this array of integers.
+Before starting the algorithm we insert some special charracter which is lexicographically less than any character in the string
+so $ will be appended to each of the prefix
+
+now we have
+$
+a$
+ababba$
+abba$
+ba$
+babba$
+bba$
+adding dollar doesn't effect the ordering
+
+Step 2 
+Make some kind of cyclic strings by adding the dollars to the string so that each of the suffixes become of equal length
+
+
+e.g.,
+we have ba$
+and say our original string is ababba$
+so our string is going to be ba$ababb now it's completed and all the lengths of the strings is seven
+we repeat these process to all other suffixes
+
+so our final suffixes lexicographically arranged and having same length.
+6--> $ababba
+5--> a$ababb
+0--> ababba$
+2--> abba$ab
+4--> ba$abab
+1--> babba$a
+3--> bba$aba
+
+If we copare the strings  just find the dollar sign and don't go further after that.
+Instead of sorting the suffixes we have the cyclic shifts of initial strings we need to sort the cyclic shitfts
+of some string
+
+
+
+STEP 3
+Making string the power of two by just adding one more character here.
+
+bba$abab----> length 8 power of 2
+babba$ab
+ba$ababb
+abba$aba
+ababba$a
+a$ababba
+$ababba$
+
+Now what we need to sort the strings which are the cyclic shifts of the original string
+with some additional characters so that total length is power of 2
+Now we will build the table  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
